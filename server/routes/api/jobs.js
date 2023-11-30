@@ -109,18 +109,25 @@ router.put('/', async (req,res) => {
   * @desc updating the jobs applicants property with the JobseekerId and the price
   */
   if (req.body.action == "applyingJob") {
-    let userId = parseInt(req.body.clientId);
-    let jobId = parseInt(req.body.jobId);
-    let requirePrice = parseInt(req.body.price);
-    let jobList = jobs.map((job) => {
-      if (job.jobId == jobId) {
-        let applicants = job.applicants;
-        applicants.push({id: userId, price: requirePrice});
-        job.applicants = applicants;
-      };
-      return job;
-    });
-    return res.json({result: "Success", temp: jobs})
+    console.log("hi");
+    const userId = parseInt(req.body.clientId);
+    const jobId = parseInt(req.body.jobId);
+    const requirePrice = parseInt(req.body.price);
+    const job = await jobs.find({_id:jobId});
+    const applicantsOnJob = job[0].applicants;
+    const addedApplicant = {
+      jobId:jobId,
+      userId: userId,
+      price: requirePrice
+    };
+    applicantsOnJob.push(addedApplicant);
+    await jobs.findOneAndUpdate({_id:jobId}, {applicants:applicantsOnJob});
+    const job2 = await jobs.find({_id:jobId});
+    console.log(job2);
+    const test = new applicants(addedApplicant);
+    test.save();
+    // console.log(applicants);
+    return res.json({result: "Success", temp: jobId});
   } else if (req.body.action == "choosing applicant") {
     /**
     * @desc updating the jobProvider property with the JobseekerId (For Client)

@@ -76,7 +76,7 @@ useEffect(() => {
                   rippleColor="primary"
                   className="text-reset m-0"
                 >
-                  Task Description <MDBIcon fas icon="calendar-day" />
+                  Task Details <MDBIcon fas icon="calendar-day" />
                 </MDBBtn></MDBCardFooter>
                 </MDBCard>
               </MDBCol>

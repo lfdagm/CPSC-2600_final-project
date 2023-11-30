@@ -13,6 +13,7 @@ import {
   MDBBtn,
   MDBListGroup,
   MDBListGroupItem,
+  MDBInput,
   MDBRow,
   MDBContainer,
   MDBCardTitle,
@@ -21,13 +22,45 @@ import {
 
 function ApplyToTask(props) {
   const [show, setShow] = useState(false);
-  const [jobId, setJobId] = useState(0);
+  const [user, setUser ] = useState();
+  const [price, setPrice ] = useState();
+  const [priceCheck, setPriceCheck] = useState(false);
+  // const [jobId, setJobId] = useState(0);
 
+  useEffect(() => {
+    const userLocal = JSON.parse(localStorage.getItem('user'));
+    console.log("hi" + userLocal.userId);
+    setUser(userLocal.userId);
+    console.log("state" + user)
+  },[]);
+  
   //Rerendering is also pending.
 
   const handleClose = () => setShow(false);
 
   const handleShow = () => setShow(true);
+
+  // const handlePriceChange = () => setPrice()
+
+  const handleSubmit = (() => {
+    if(priceCheck) {
+      const request = {
+        action: "applyingJob",
+        clientId: user,
+        jobId: props.job._id,
+        price: price
+      };
+      axios.put("http://localhost:3500/api/jobs/", request).then((repos) => {
+        console.log(repos);
+        if (repos.data.result === "Success") {
+          handleClose();
+          window.location.reload();
+        }
+      })
+    } else {
+      console.log("please enter the price");
+    }
+  });
 
   return (
     <>
@@ -61,10 +94,17 @@ function ApplyToTask(props) {
                     className="rounded-circle"
                   /><MDBListGroup style={{ minWidthL: "22rem" }} light>
                   <MDBListGroupItem noBorders>
-                    Job provider: {props.job.jobProvider}
+                    Job Title: {props.job.jobTitle}
                   </MDBListGroupItem>
                   <MDBListGroupItem noBorders>
-                    Price: {}
+                    Job Description: {props.job.jobDescription}
+                  </MDBListGroupItem>
+                  <MDBListGroupItem noBorders>
+                    Your Price: 
+                    <MDBInput label='Example label' id='form1' type='number' onChange = {(e) => {
+                        setPrice(e.target.value);
+                        setPriceCheck(true);
+                      }}/>
                   </MDBListGroupItem>
                   <MDBListGroupItem noBorders>
                     Date Posted: {props.job.postCreated}
@@ -80,8 +120,8 @@ function ApplyToTask(props) {
         <MDBBtn variant="secondary" onClick={handleClose}>
           Cancel
         </MDBBtn>
-        <MDBBtn variant="primary">
-          Mark as completed
+        <MDBBtn variant="primary" onClick={handleSubmit}>
+          Apply
         </MDBBtn>
       </Modal.Footer>
     </Modal>
