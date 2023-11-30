@@ -36,6 +36,7 @@ function PotentialJobs(props) {
     const request = {
       action: "related jobs",
       areaOfInterest: aOI,
+      userId: user.userId
     };
     axios.post("http://localhost:3500/api/jobs/", request).then((repos) => {
       const data = repos.data;

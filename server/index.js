@@ -14,6 +14,7 @@ app.use(express.urlencoded({extended: false}));
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 const mongoDB = "mongodb+srv://vancomertester:fHlW1ORvAU3PKQVv@cluster0.kvg4nq6.mongodb.net/?retryWrites=true&w=majority";
+//"mongodb+srv://vancomer:9i5wcgkKIGBr4pK6@vancomer.jozmuwy.mongodb.net/?retryWrites=true&w=majority"
 
 main().catch((err) => console.log(err));
 async function main() {

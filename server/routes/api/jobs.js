@@ -39,6 +39,7 @@ router.post('/', async (req,res) => {
               break;
             }
           }
+          console.log(allJobs[i] + "\n***" + applied);
           if (!applied) {
           result.push(allJobs[i]);
           break;
@@ -46,6 +47,7 @@ router.post('/', async (req,res) => {
         }
       }
     }
+    console.log(result);
     return res.json(result);
   } else if (req.body.action == "Jobseeker jobs") {
     /**
@@ -57,11 +59,15 @@ router.post('/', async (req,res) => {
     const allJobs = await jobs.find({});
     for (i = 0; i < allJobs.length; i++) {
       let applied = false;
+      // let show = false;
       for (j = 0; j < appliedJobs.length; j++) {
         if (allJobs[i]._id === appliedJobs[j].jobId) {
           applied = true;
           break;
         }
+        // if(allJobs[i].jobProvider === userId) {
+        //   show = true;
+        // }
       }
       if (applied) {
         result.push(allJobs[i]);

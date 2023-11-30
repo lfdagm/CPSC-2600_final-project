@@ -18,7 +18,9 @@ export default function ClientPage () {
     const request = {
     action: "Jobseeker jobs",
     userId: userTemp.userId
+    
   }
+  console.log(request.userId);
     axios.post("http://localhost:3500/api/jobs/", request).then((repos) =>{
       const data = repos.data;
       console.log(data);
