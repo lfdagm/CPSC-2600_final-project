@@ -35,7 +35,6 @@ function PotentialJobs(props) {
   useEffect(() => {
     const request = {
       action: "related jobs",
-      userId: user.userId,
       areaOfInterest: aOI,
     };
     axios.post("http://localhost:3500/api/jobs/", request).then((repos) => {
