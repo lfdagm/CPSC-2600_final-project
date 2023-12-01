@@ -16,7 +16,7 @@ import Documentation from './components/pages/Documentation';
 
 
 function App() {
-  // This is the Login, roleSelection, and signUp pops appearing and closing handler. Feel free to optimise it.
+  // This is the Login, roleSelection, and signUp pops appearing and closing handler.
   const [role, setRole] = useState();
   const [signUpShow, setSignUpShow] = useState(false);
   const [logInShow, setLogInShow] = useState(false);
@@ -32,7 +32,7 @@ function App() {
   };
   const handleJobSeekerRoleSelection = () => {
     setRole("JobSeeker");
-    handleSignUpShow();/*change to job seeker signup pop later*/ 
+    handleSignUpShow();
     handleRoleShowClose()
   };
   const handleSignUpShow = () => setSignUpShow(true);
@@ -50,11 +50,13 @@ useEffect(() => {
 });
   return (
     <div className="App">
+      {/* NavBar Component */}
       <header className="App-header">
         <NavBar 
         handleRoleShow={handleRoleShow}
         handleLogInShow={handleLogInShow}/>
       </header>
+      {/* Role Selection, Signup, and log pops in component */}
       <RoleSelectionPop 
       roleShow = {roleShow}
       handleRoleShowClose = {handleRoleShowClose}
@@ -71,10 +73,10 @@ useEffect(() => {
       logInShow= {logInShow}
       setLogInShow = {setLogInShow}
       handleLogInClose={handleLogInClose}/>
+
       {/* Main display routes */}
       {/* Please follow this format because we are using a newer version of react-router-dom */}
       <MDBContainer fluid>
-          
           <Routes>
             <Route path='/' element={<Home />} exact />
             {/* <Route path='/aboutus' component={About} /> */}
@@ -82,8 +84,6 @@ useEffect(() => {
             <Route path='*' element={<Error />} />
             <Route path='/sources' element={<Sources/>} />
             <Route path='/documentation' element={<Documentation/>} />
-
-
           </Routes>
           </MDBContainer>
       <Footer/>
