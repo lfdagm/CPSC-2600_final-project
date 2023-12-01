@@ -36,13 +36,15 @@ function SelectApplicants(props) {
     console.log(applicantId);
   };
   useEffect(() => {
-    const currentJobId = props.job._id;
-    axios.get("http://localhost:3500/api/testing/" + currentJobId)
+    const activeJobs = async () =>{
+      const currentJobId = props.job._id;
+    await axios.get("http://localhost:3500/api/testing/" + currentJobId)
     .then((repos) => {
       const job = repos.data;
       setUpdatedJob(job);
-  console.log(updatedJob);
-    });
+      console.log("hi" + updatedJob);})
+    };
+    activeJobs();
   }, [])
   // function selectTasker() {
   //   const jobId = props.job.jobId;
