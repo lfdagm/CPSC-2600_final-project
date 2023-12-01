@@ -1,9 +1,9 @@
 import Carousel from 'react-bootstrap/Carousel';
 import { useState } from 'react';
 import { Link } from "react-router-dom";
-// import {uuid} from 'uuid';
 const uuid = require('uuid');
 
+// Carousel images
 const images = [
   {
     id: uuid.v4(),
@@ -32,11 +32,13 @@ const images = [
     link: "/"
   }
 ];
+// Carousel component
+// Images changes every 5 seconds and fading
+// Clicking on Images will lead to other pages of the website. We will implement them in the future updates
 function CarouselComponent() {
   const [index, setIndex] = useState(0);
   const hadnleDotClick = (selectedIndex) => setIndex(selectedIndex);
   return (
-    // <div className='carouselComponent' style={{ display: 'block', width: '80%', padding: 30, margin:'5.5rem auto', border: "rgba(255,255,255,0), solid, 2px", borderRadius: "20px"}}>
       <Carousel style={{margin:"5.5rem auto" }}activeIndex={index} onSelect={hadnleDotClick} fade>
       {images.map((slide) => {
         return (
@@ -48,7 +50,15 @@ function CarouselComponent() {
             />
             <Carousel.Caption>
               <Link to = {slide.link} style={{textDecoration: "none", color:"aliceblue"}}>
-                <div style={{backgroundColor: "rgba(0,0,0,0.5)", border: "rgba(255,255,255,0), solid, 2px", borderRadius: "20px", marginBottom:0, width:"80%", marginLeft:"auto", marginRight:"auto", padding:"1%"}}>
+                <div style={{
+                  backgroundColor: "rgba(0,0,0,0.5)",
+                  border: "rgba(255,255,255,0), solid, 2px",
+                  borderRadius: "20px",
+                  marginBottom:0,
+                  width:"80%",
+                  marginLeft:"auto",
+                  marginRight:"auto",
+                  padding:"1%"}}>
                   <h2>{slide.header}</h2>
                   <p style={{fontSize: "18px"}}>{slide.content}</p>
                 </div>

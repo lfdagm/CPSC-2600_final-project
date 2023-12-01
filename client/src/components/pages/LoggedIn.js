@@ -9,7 +9,6 @@ function LoggedInPage() {
     <>
       {user.role === "client"? <ClientPage /> : <JobSeekerPage />}
     </>
-
 )
 }
 
