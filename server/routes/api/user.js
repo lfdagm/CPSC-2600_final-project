@@ -23,9 +23,10 @@ router.post('/', async (req,res) => {
         return res.json(userFound);
       }
     }
-  } else {
+  } else if (req.body.action == "signup") {
     // Check if email already registered
-    if (users.find((user) => user.email === req.body.email)) {
+    if (await users.find({email:req.body.email}).length >= 0) {
+      console.log(await users.find({email:req.body.email}));
       return res.json({result: "failed", reason:"email existed."});
     }
     // check if the req body contain areaOfInterest
@@ -33,8 +34,9 @@ router.post('/', async (req,res) => {
     // else it is a client
     let returnData = {};
     if (req.body.areaOfInterest) {
+      console.log("hi" + currentUserId)
     const newUser = {
-      clientId: currentUserId,
+      _id: currentUserId,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       role: req.body.role,
@@ -42,37 +44,35 @@ router.post('/', async (req,res) => {
       password: req.body.password,
       areaOfInterest: req.body.areaOfInterest,
     };
+    const request = new users(newUser);
+    request.save();
     returnData = {
       result: "success",
-      clientId: currentUserId,
+      userId: currentUserId,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       role: req.body.role,
-      email: req.body.email,
-      password: req.body.password,
       areaOfInterest: req.body.areaOfInterest,
     };
-    users.push(newUser);
   } else {
     const newUser = {
-      clientId: currentUserId,
+      _id: currentUserId,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       role: req.body.role,
       email: req.body.email,
       password: req.body.password,
+      areaOfInterest:[]
     };
+    const request = new users(newUser);
+    request.save();
     returnData = {
       result: "success",
-      clientId: currentUserId,
+      userId: currentUserId,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       role: req.body.role,
-      email: req.body.email,
-      password: req.body.password,
     };
-    console.log(returnData);
-    users.push(newUser);
   }
   // increment id for unique userIds
     currentUserId++;

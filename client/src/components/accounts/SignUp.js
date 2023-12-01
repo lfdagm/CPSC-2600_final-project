@@ -1,23 +1,33 @@
 import { useState, useEffect } from 'react';
 import { Col, Button, Row, Form, Modal } from 'react-bootstrap';
 import axios from "axios";
+import validator from 'validator';
 
 export default function SignUp (props) {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [confirmPw, setConfirmPw] = useState();
+  const [confirmPassword, setConfirmPassword] = useState("");
   const role = "client";
-  const [error, setError] = useState(false);
+  const [emailErrorMessage, setEmailErrorMessage] = useState(false);
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
 
-  var passwordCheckDisplay = "Notice: Password must be at least 10 characters, with at least one of each of capital letter, lowercase letter, number, and sign.";
   // password Validation??
-
+  const validate = (value) => { 
+        if (validator.isStrongPassword(value, { 
+            minLength: 10, minLowercase: 1, 
+            minUppercase: 1, minNumbers: 1, minSymbols: 1 
+        })) { 
+            setPasswordErrorMessage('Is Strong Password') 
+        } else { 
+            setPasswordErrorMessage('Is Not Strong Password') 
+        } 
+    } 
   // handling submit
-  const submitHandling = (e) => {
+  const submitHandling = async (e) => {
     e.preventDefault();
-    if (password === confirmPw) {
+    if (password === confirmPassword) {
       const newUser = {
         action: "signup",
         firstName: firstName,
@@ -26,10 +36,9 @@ export default function SignUp (props) {
         email: email,
         password: password
       }
-      axios.post('http://localhost:3500/api/user/', newUser).then ((repos) => {
+      await axios.post('http://localhost:3500/api/user/', newUser).then ((repos) => {
         if (repos.data.result === "success") {
           const user = {
-            action: "signup",
             userId: repos.data.clientId,
             firstName: repos.data.firstName,
             lastName: repos.data.lastName,
@@ -41,14 +50,15 @@ export default function SignUp (props) {
           props.handleSignUpClose();
           window.location.replace("http://localhost:3000/login");
         } else {
-          setError(true);
+          setEmailErrorMessage(true);
         }
       })
     }
   };
   // causing a re-render in the modal
   useEffect(() => {
-  },[error]);
+  },[emailErrorMessage]);
+
   return (
     <>
       <Modal show={props.signUpShow} onHide={props.handleSignUpClose}>
@@ -95,7 +105,7 @@ export default function SignUp (props) {
               placeholder='johnsmith123@example.com' 
               onChange={(e)=>setEmail(e.target.value)}/>
               <Form.Text className = "text-muted">
-                {((error)? "We will never share your email with anyone else." : "This email already exist.")}
+                {((emailErrorMessage)? "We will never share your email with anyone else." : "This email already exist.")}
               </Form.Text>
               <Form.Text className = "text-muted">
                 We will never share your email with anyone else.
@@ -106,15 +116,23 @@ export default function SignUp (props) {
                 <Form.Control
                 type="password"
                 placeholder="Enter your Password"
-                onChange={(e)=>setPassword(e.target.value)} />
+                onChange={(e)=>{
+                  setPassword(e.target.value);
+                  validate(e.target.value);
+                }} />
+                {passwordErrorMessage === '' ? null : <>
+                    <span style={{ 
+                        fontWeight: 'bold', 
+                        color: 'red', 
+                    }}>{passwordErrorMessage}</span><br /></>} 
                 <Form.Text className = "text-muted">
-                {passwordCheckDisplay}
+                Your passord should have at least 10 character, with at least 1 uppercase letter, 1 lowercase letter, 1 numberic character, and 1 symbolic character.
               </Form.Text>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Confirm Password</Form.Label>
                 <Form.Control type="password" placeholder="Re-enter your Password"
-                onChange={(e) => {setConfirmPw(e.target.value)}} />
+                onChange={(e)=>setConfirmPassword(e.target.value)} />
               </Form.Group>
               <Button variant="primary" type="submit" onClick={submitHandling}>
                 Submit

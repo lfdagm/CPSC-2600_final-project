@@ -90,6 +90,7 @@ router.post('/', async (req,res) => {
       jobDescription: req.body.jobDescription,
       jobDate: req.body.jobDate,
       postCreated: req.body.postCreated,
+      address: req.body.address,
       applicants:[],
       status:"searching"
     };
