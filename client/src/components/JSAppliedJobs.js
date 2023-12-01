@@ -3,6 +3,8 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Form from 'react-bootstrap/Form';
 import { useEffect, useState } from 'react';
 
+import Button from 'react-bootstrap/Button';
+
 import {
   MDBCard,
   MDBCardHeader,
@@ -70,14 +72,14 @@ useEffect(() => {
                     background="light"
                     border="0"
                     className="p-2 d-flex justify-content-around"
-                  ><MDBBtn
+                  ><Button
                   onClick={() => handleShow(job)}
-                  color="link"
-                  rippleColor="primary"
-                  className="text-reset m-0"
+                  variant="light"
+                  
+  
                 >
                   Task Details <MDBIcon fas icon="calendar-day" />
-                </MDBBtn></MDBCardFooter>
+                </Button></MDBCardFooter>
                 </MDBCard>
               </MDBCol>
               ))}

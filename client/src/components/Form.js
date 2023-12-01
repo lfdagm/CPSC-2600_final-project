@@ -48,7 +48,7 @@ function UserForm(props){
 
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridTitle">
-          <Form.Label>Task name</Form.Label>
+          <Form.Label>Task Name</Form.Label>
           <Form.Control 
           type="text" 
           placeholder="Enter task name"
@@ -74,7 +74,7 @@ function UserForm(props){
       </Row>
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridDate">
-          <Form.Label>Date:</Form.Label>
+          <Form.Label>Date</Form.Label>
           <Form.Control type="date" onChange={(e) => setDate(e.target.value)}/>
         </Form.Group>
       </Row>
@@ -83,8 +83,8 @@ function UserForm(props){
         <Form.Control placeholder="1234 Main St" onChange={(e)=>{setAddress(e.target.value)}}/>
       </Form.Group>
 
-      <Form.Group as={Col} controlId="formGridCategories">
-          <Form.Label>categories</Form.Label>
+      <Form.Group as={Col} controlId="formGridCategories" className='mb-4'>
+          <Form.Label>Categories</Form.Label>
           <Form.Select defaultValue="housing" onChange={(e) => {
             setCategory(e.target.value);
             console.log(e.target.value);
