@@ -7,7 +7,7 @@ function LoggedInPage() {
   const user = JSON.parse(localStorage.getItem('user'));
   return(
     <>
-      {user.role === "client"? <ClientPage /> : <JobSeekerPage />};
+      {user.role === "client"? <ClientPage /> : <JobSeekerPage />}
     </>
 
 )
