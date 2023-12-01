@@ -46,7 +46,6 @@ function MarkAsCompleted(props) {
           window.location.reload();
           console.log(response.data.temp);
         }
-        
       });
   }
   useEffect(() => {},[jobId]);

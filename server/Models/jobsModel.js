@@ -12,6 +12,7 @@ const jobPostSchema = new Schema({
     jobDescription: {type: String, required: true, maxLength: 300},
     jobDate: {type: Date, required: true},
     postCreated: {type: Date, default:Date.now()},
+    address: {type:String, required: true, maxLength:150},
     applicants: [{
       id:{type: Number,
         require: true

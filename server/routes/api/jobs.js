@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const jobs = require('../../Models/jobsModel');
 const applicants = require('../../Models/applicantsModel');
-let currentJobId = 8;
+let currentJobId = 9;
 
 /**
  * @route GET api/jobs/
@@ -17,7 +17,7 @@ router.get('/:userId', async (req, res) => {
 });
 /**
  * @route POST api/jobs/
- * @desc Creates a new job post (For Client)
+ * @desc 
  **/
 router.post('/', async (req,res) => {
   /**
@@ -75,7 +75,7 @@ router.post('/', async (req,res) => {
     }
     console.log(result);
     return res.json(result);
-  } else {
+  } else if (req.body.action == "createJobPost") {
     /**
       * @desc Creates a new job post (For Client)
     **/
@@ -83,8 +83,8 @@ router.post('/', async (req,res) => {
       return res.status(400).json({msg: "Bad request: task name cannot be empty of null"});
     }
     const newJobPost = {
-      id: currentJobId,
-      clientId: req.body.userId,
+      _id: currentJobId,
+      clientId: req.body.clientId,
       category: req.body.category,
       jobTitle: req.body.jobTitle,
       jobDescription: req.body.jobDescription,
@@ -93,10 +93,11 @@ router.post('/', async (req,res) => {
       applicants:[],
       status:"searching"
     };
-    jobs.push(newJobPost);
+    const job = new jobs(newJobPost);
+    job.save();
     // increment id for unique jobIds
     currentJobId++;
-    return res.json(jobs);
+    return res.json({result:"Success", temp:newJobPost});
   }
 });
 

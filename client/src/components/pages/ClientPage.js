@@ -23,10 +23,10 @@ export default function ClientPage() {
     });
   }, []);
 
-  const handleFormSubmit = (formData) => {
-    // setActiveTasks([...activeTasks,formData])
-    setActiveTasks([...activeTasks, { taskName: formData.taskname }]);
-  };
+  // const handleFormSubmit = (formData) => {
+  //   // setActiveTasks([...activeTasks,formData])
+  //   setActiveTasks([...activeTasks, { taskName: formData.taskname }]);
+  // };
 
   const handleCheckboxChange = (task) => {
     if (selectedTasks.some((t) => t.taskName === task.taskName)) {
@@ -58,7 +58,8 @@ export default function ClientPage() {
       </MDBRow>
       <MDBRow>
         <MDBCol>
-          <FormModal onFormSubmit={handleFormSubmit} />
+          <FormModal />
+          {/* <FormModal onFormSubmit={handleFormSubmit} /> */}
         </MDBCol>
       </MDBRow>
       
