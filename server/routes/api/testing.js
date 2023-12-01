@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const jobs = require('../../Models/jobsModel');
+const applicants = require('../../Models/applicantsModel');
 
 /**
  * @route GET api/testing/
@@ -9,8 +9,8 @@ const jobs = require('../../Models/jobsModel');
 router.get('/:currentJobId', async (req, res) => {
   const jobId = parseInt(req.params.currentJobId);
   console.log("hi");
-  const targetJobs = await jobs.find({_id: jobId});
-  console.log("test" + targetJobs[0]);
-  return res.json(targetJobs[0]);
+  const appliedApplicants = await applicants.find({jobId: jobId});
+  console.log("test" + appliedApplicants);
+  return res.json(appliedApplicants);
 });
 module.exports = router;

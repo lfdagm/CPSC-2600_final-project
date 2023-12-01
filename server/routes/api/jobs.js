@@ -133,16 +133,11 @@ router.put('/', async (req,res) => {
     /**
     * @desc updating the jobProvider property with the JobseekerId (For Client)
     */
-    let userId = req.body.jobSeekerId;
-    let jobId = req.body.jobId;
-    jobs.map((job) => {
-      if (job.jobId == jobId) {
-        job.jobProvider = userId;
-        job.status="confirmed";
-      };
-      return job;
-    });
-    return res.json({result: "Success", temp: jobs})
+    let userId = parseInt(req.body.jobSeekerId);
+    console.log(userId);
+    let jobId = parseInt(req.body.jobId);
+    await jobs.findOneAndUpdate({_id:jobId}, {jobProvider: userId, status:"confirmed"});
+    return res.json({result: "Success"})
   } else if (req.body.action == "completeJob") {
     /**
   * @desc updating the status property to completed (For Client)

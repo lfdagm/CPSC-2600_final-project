@@ -25,7 +25,13 @@ import SelectApplicants from "./SelectApplicants";
 
 function ActiveTask(props) {
   const [jobPosts, setJobPosts] = useState([]);
+  const [selectShow, setSelectShow] = useState(false);
+  const [completeShow, setCompleteShow] = useState(false);
 
+  // const handleSelectShow = () => setSelectShow(true);
+  // const handleSelectShowClose = () => setSelectShow(false);
+  // const handleCompleteShow = () => setCompleteShow(true);
+  // const handleCompleteShowClose = () => setCompleteShow(false);
 
 
   // const [applicants, setApplicants]=useState([]);
@@ -67,7 +73,6 @@ function ActiveTask(props) {
                             {job.jobDescription}
                           </p>
                         </div>
-                        {console.log(job)}
                       </div>
                       {/* <MDBBadge pill color='success' light>
                 Active

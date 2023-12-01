@@ -18,7 +18,7 @@ const dummyData = [
       { id: 3, price: 250 },
       { id: 4, price: 300 },
     ],
-    jobProvider: undefined,
+    jobProvider: -1,
     status: "searching",
   },
   {
@@ -97,7 +97,7 @@ const dummyData = [
       { id: 3, price: 75 },
       { id: 4, price: 90 },
     ],
-    jobProvider: undefined,
+    jobProvider: -1,
     status: "searching",
   },
   {
@@ -113,7 +113,7 @@ const dummyData = [
       { id: 3, price: 120 },
       { id: 4, price: 170 },
     ],
-    jobProvider: undefined,
+    jobProvider: -1,
     status: "searching",
   },
   {
@@ -126,7 +126,7 @@ const dummyData = [
     postCreated: "2022-10-15",
     address: "988 Fraser street, vancouver",
     applicants: [{ id: 3, price: 50 }],
-    jobProvider: undefined,
+    jobProvider: -1,
     status: "searching",
   },
   {
@@ -139,7 +139,7 @@ const dummyData = [
     postCreated: "2022-10-15",
     address: "56 Cambie street, vancouver",
     applicants: [],
-    jobProvider: undefined,
+    jobProvider: -1,
     status: "searching",
   },
 ];
