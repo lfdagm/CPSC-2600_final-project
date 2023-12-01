@@ -12,7 +12,7 @@ function NavBar(props) {
   return (
     <Navbar sticky="top" expand="lg" className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="#home"><img
+        <Navbar.Brand href="/"><img
               src={require("./../img/logo_transparent.png")}
               width="100%"
               height="60"
@@ -22,8 +22,9 @@ function NavBar(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#about">About</Nav.Link>
-            <Nav.Link href="#documentation">Documentation</Nav.Link>
+            {/* <Nav.Link href="#about">About</Nav.Link> */}
+            <Nav.Link href="/documentation">Documentation</Nav.Link>
+            <Nav.Link href="/sources">Sources</Nav.Link>
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">

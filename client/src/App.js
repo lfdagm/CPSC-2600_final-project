@@ -11,6 +11,8 @@ import Error from './components/pages/Error';
 import RoleSelectionPop from './components/accounts/RoleSelectionPop';
 
 import { MDBContainer } from 'mdb-react-ui-kit';
+import Sources from './components/pages/Sources';
+import Documentation from './components/pages/Documentation';
 
 
 function App() {
@@ -78,6 +80,10 @@ useEffect(() => {
             {/* <Route path='/aboutus' component={About} /> */}
             <Route path='/login' element={<LoggedIn />} />
             <Route path='*' element={<Error />} />
+            <Route path='/sources' element={<Sources/>} />
+            <Route path='/documentation' element={<Documentation/>} />
+
+
           </Routes>
           </MDBContainer>
       <Footer/>
