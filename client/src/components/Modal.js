@@ -26,7 +26,7 @@ function FormModal (props){
 
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>FORM: New Task</Modal.Title>
+        <Modal.Title>New Task</Modal.Title>
       </Modal.Header>
       <Modal.Body> <Form onFormSubmit={handleFormSubmit} /> </Modal.Body>
       <Modal.Footer>
