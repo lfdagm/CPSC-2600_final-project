@@ -70,9 +70,14 @@ export default function SignUp(props) {
           } else {
             setEmailErrorMessage(true);
           }
-        });
-    }
-  };
+        }
+        );
+    } else if (password === confirmPassword) {
+    setPasswordErrorMessage("Confirm Password does not match with the password you have input");
+    } else if (passwordErrorMessage !== 'Is Strong Password') {
+      setPasswordErrorMessage("Your passord should have at least 10 character, with at least 1 uppercase letter, 1 lowercase letter, 1 numberic character, and 1 symbolic character.");
+    };
+  }
   // causing a re-render in the modal
   useEffect(() => {}, [emailErrorMessage]);
 
@@ -183,8 +188,6 @@ export default function SignUp(props) {
               Submit
             </Button>
         </Modal.Footer>
-          
-       
       </Modal>
     </>
   );

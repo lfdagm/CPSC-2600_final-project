@@ -83,8 +83,10 @@ export default function SignUp (props) {
         setEmailErrorMessage(true);
       }
     })
-  } else {
+  } else if (password === confirmPassword) {
     setPasswordErrorMessage("Confirm Password does not match with the password you have input");
+  } else if (passwordErrorMessage !== 'Is Strong Password') {
+    setPasswordErrorMessage("Your passord should have at least 10 character, with at least 1 uppercase letter, 1 lowercase letter, 1 numberic character, and 1 symbolic character.");
   };
 };
 
@@ -155,7 +157,7 @@ export default function SignUp (props) {
                 Your passord should have at least 10 character, with at least 1 uppercase letter, 1 lowercase letter, 1 numberic character, and 1 symbolic character.
               </Form.Text>
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Group className="mb-3" controlId="formBasicPasswordConfirm">
                 <Form.Label>Confirm Password</Form.Label>
                 <Form.Control type="password" placeholder="Re-enter your Password" onChange={(e)=>setConfirmPassword(e.target.value)}/>
               </Form.Group>
