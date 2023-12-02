@@ -161,7 +161,7 @@ function SelectApplicants(props) {
         </Modal.Body>
         <Modal.Footer>
        
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>
