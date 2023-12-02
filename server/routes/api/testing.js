@@ -4,7 +4,7 @@ const applicants = require('../../Models/applicantsModel');
 
 /**
  * @route GET api/testing/
- * @desc Retrives all the jobs match with the userId (For Client)
+ * @desc [Client] Retrives all the jobs match with a particular job. So the front-end can display the latest applicants list for the client to choose.
  **/
 router.get('/:currentJobId', async (req, res) => {
   const jobId = parseInt(req.params.currentJobId);
