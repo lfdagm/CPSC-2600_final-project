@@ -6,18 +6,10 @@ import FormModal from "../Modal";
 
 import {
   MDBCard,
-  MDBCardHeader,
   MDBCardBody,
-  MDBCardFooter,
   MDBCol,
-  MDBIcon,
-  MDBBtn,
-  MDBListGroup,
-  MDBListGroupItem,
   MDBRow,
   MDBContainer,
-  MDBCardTitle,
-  MDBCardSubTitle,
 } from "mdb-react-ui-kit";
 
 export default function ClientPage() {
@@ -52,63 +44,48 @@ export default function ClientPage() {
     }
   };
   return check ? (
-    <MDBContainer className="gx-4 mt-4 w-75" >
-  
-      <MDBRow className="text-center mb-3">
-        <MDBCol>
-          <h2>Client Page</h2>
+    <MDBContainer className="gx-4 mt-4 w-75">
+      <MDBRow>
+        <MDBCol className="mb-4">
+          <MDBCard alignment="center">
+            <MDBCardBody className="px-4 pt-4">
+              <MDBRow className="row-cols-1 row-cols-md-1 gx-3">
+                <MDBCol className="mb-4">
+                  <h3>Start Your Vancouver Journey with Ease</h3>
+                </MDBCol>
+
+                <MDBCol>
+                  <p>
+                    New to Vancouver? Let VanComer connect you with local
+                    experts for all your settling-in needs.
+                  </p>
+
+                  <p>
+                    Book a task today and take the first step towards a seamless
+                    transition into your new city!
+                  </p>
+                </MDBCol>
+              </MDBRow>
+
+              <MDBRow>
+                <MDBCol>
+                  <FormModal />
+                </MDBCol>
+              </MDBRow>
+            </MDBCardBody>
+          </MDBCard>
         </MDBCol>
       </MDBRow>
       <MDBRow>
         <MDBCol className="mb-4">
-        <MDBCard alignment="center">
-    
-        <MDBCardBody className="px-4 pt-4">
-          <MDBRow className="row-cols-1 row-cols-md-1 gx-3">
-          <MDBCol className="mb-4">
-          <h3>Start Your Vancouver Journey with Ease</h3>
-      
-          </MDBCol>
-          <MDBRow>
-          <MDBCol>
-          <p>New to Vancouver? Let VanComer connect you with local experts for all your settling-in needs.</p>
-        
-          </MDBCol>
-          <MDBRow>
-
-          <MDBCol>
-          <p>Book a task today and take the first step towards a seamless transition into your new city!</p>
-          </MDBCol>
-          </MDBRow>
-
-          </MDBRow>
-          <MDBRow className="p-2 d-flex ">
-            <MDBCol>
-          <FormModal/>
-          </MDBCol>
-          </MDBRow>
-          </MDBRow>
-          </MDBCardBody>
-          {/* <MDBCardFooter background="light"
-                    border="0"
-                    className="p-2 d-flex justify-content-around">
-                     
-                    </MDBCardFooter> */}
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
-      <MDBRow className="mb-5">
-        <MDBCol>
           <ActiveTask onCheckboxChange={handleCheckboxChange} />
         </MDBCol>
       </MDBRow>
       <MDBRow className="mb-4">
         <MDBCol>
-          <Historic  />
+          <Historic />
         </MDBCol>
       </MDBRow>
-     
-      
     </MDBContainer>
   ) : (
     <></>
