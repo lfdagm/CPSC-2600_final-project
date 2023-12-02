@@ -2,8 +2,17 @@
 const mongoose = require('mongoose');
 const Applicants = require('./Models/applicantsModel'); // Adjust the path based on your project structure
 
-mongoose.connect('mongodb+srv://vancomertester:fHlW1ORvAU3PKQVv@cluster0.kvg4nq6.mongodb.net/?retryWrites=true&w=majority');
-//"mongodb+srv://vancomer:9i5wcgkKIGBr4pK6@vancomer.jozmuwy.mongodb.net/?retryWrites=true&w=majority"
+mongoose.set("strictQuery", false);
+
+const dev_db_url =
+  "mongodb+srv://your_user_name:your_password@cluster0.lz91hw2.mongodb.net/local_library?retryWrites=true&w=majority";
+const mongoDB = process.env.MONGODB_URI || dev_db_url;
+
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+}
+
 const dummyData = [
 
       { jobId:0, userId: 3, price: 250 },
