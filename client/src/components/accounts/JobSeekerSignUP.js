@@ -78,7 +78,7 @@ export default function SignUp (props) {
         // setError(false);
         props.handleSignUpClose();
         // redirect()
-        window.location.replace("http://localhost:3000/login");
+        window.location.replace("https://thriving-kleicha-aff060.netlify.app0/login");
       } else {
         setEmailErrorMessage(true);
       }
