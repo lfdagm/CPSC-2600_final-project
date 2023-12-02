@@ -13,8 +13,10 @@ app.use(express.urlencoded({extended: false}));
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = "mongodb+srv://vancomertester:fHlW1ORvAU3PKQVv@cluster0.kvg4nq6.mongodb.net/?retryWrites=true&w=majority";
-//"mongodb+srv://vancomer:9i5wcgkKIGBr4pK6@vancomer.jozmuwy.mongodb.net/?retryWrites=true&w=majority"
+
+const dev_db_url =
+  "mongodb+srv://your_user_name:your_password@cluster0.lz91hw2.mongodb.net/local_library?retryWrites=true&w=majority";
+const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 main().catch((err) => console.log(err));
 async function main() {
