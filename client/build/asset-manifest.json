@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1f99d583.css",
+    "main.js": "/static/js/main.998441db.js",
+    "static/js/787.f88a2eed.chunk.js": "/static/js/787.f88a2eed.chunk.js",
+    "static/media/UnitedBanner1024.png": "/static/media/UnitedBanner1024.ac2cdab018b9171e9375.png",
+    "static/media/TransportBanner1024.png": "/static/media/TransportBanner1024.f3040b70283d748e08a0.png",
+    "static/media/vancouverBanner1024.jpg": "/static/media/vancouverBanner1024.bc9c1a2b028af2966ad5.jpg",
+    "static/media/newComer320.jpg": "/static/media/newComer320.7c6010f2c040ec24ad18.jpg",
+    "static/media/community320.jpg": "/static/media/community320.ca97dfb3e4e22d601151.jpg",
+    "index.html": "/index.html",
+    "main.1f99d583.css.map": "/static/css/main.1f99d583.css.map",
+    "main.998441db.js.map": "/static/js/main.998441db.js.map",
+    "787.f88a2eed.chunk.js.map": "/static/js/787.f88a2eed.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1f99d583.css",
+    "static/js/main.998441db.js"
+  ]
+}
