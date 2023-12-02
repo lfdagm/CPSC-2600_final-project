@@ -78,7 +78,6 @@ function AppliedTask(props) {
                             {job.jobDescription}
                           </p>
                         </div>
-                        {console.log(job)}
                       </div>
                     </div>
                   </MDBCardBody>

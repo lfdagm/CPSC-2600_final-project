@@ -62,13 +62,12 @@ export default function SignUp(props) {
               lastName: repos.data.lastName,
               role: repos.data.role,
             };
-            console.log(user);
             localStorage.setItem("user", JSON.stringify(user));
             // setError(false);
             props.handleSignUpClose();
             window.location.replace("https://thriving-kleicha-aff060.netlify.app/login");
-          } else {
-            setEmailErrorMessage(true);
+          } else if (repos.data.result === "error") {
+            setEmailErrorMessage(repos.data.reason);
           }
         }
         );
