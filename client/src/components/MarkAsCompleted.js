@@ -6,16 +6,10 @@ import Button from "react-bootstrap/Button";
 import React from "react";
 import {
   MDBCard,
-  MDBCardHeader,
   MDBCardBody,
-  MDBCardFooter,
-  MDBCol,
   MDBIcon,
-  MDBBtn,
   MDBListGroup,
   MDBListGroupItem,
-  MDBRow,
-  MDBContainer,
   MDBCardTitle,
   MDBCardSubTitle,
 } from "mdb-react-ui-kit";
@@ -24,7 +18,6 @@ function MarkAsCompleted(props) {
   const [show, setShow] = useState(false);
   const [jobId, setJobId] = useState(0);
 
-  //Rerendering is also pending.
 
   const handleClose = () => setShow(false);
 
@@ -54,6 +47,7 @@ function MarkAsCompleted(props) {
     const matchingApplicant = props.job.applicants.find(
       (applicant) => applicant.id === props.job.jobProvider
     );
+   
     return matchingApplicant ? matchingApplicant.price : null;
   }
 
@@ -77,13 +71,13 @@ function MarkAsCompleted(props) {
             <MDBCardBody>
               <MDBCardTitle>{props.job.jobTitle}</MDBCardTitle>
               <MDBCardSubTitle className="mb-2">
-                Job date: {props.job.jobDate}
+                Job Date: {props.job.jobDate}
               </MDBCardSubTitle>
               <div className="d-flex justify-content-between align-items-center">
                 <div className="d-flex align-items-center">
                   <img
                     src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                    alt=""
+                    alt="category"
                     style={{ width: "50px", height: "50px" }}
                     className="rounded-circle"
                   />
@@ -93,12 +87,12 @@ function MarkAsCompleted(props) {
                             {props.job.jobDescription}
                           </p>
                         </div> */}
-                  <MDBListGroup style={{ minWidthL: "22rem" }} light>
+                  <MDBListGroup style={{ lineHeight:"0.7" }} light>
                     <MDBListGroupItem noBorders>
-                      Job provider: {props.job.jobProvider}
+                      Job Provider ID: {props.job.jobProvider}
                     </MDBListGroupItem>
                     <MDBListGroupItem noBorders>
-                      Price: {getPrice()}
+                      Price: $ {getPrice()}
                     </MDBListGroupItem>
                     <MDBListGroupItem noBorders>
                       Date Posted: {props.job.postCreated}
@@ -111,12 +105,12 @@ function MarkAsCompleted(props) {
         </Modal.Body>
 
         <Modal.Footer>
-          <MDBBtn variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose}>
             Cancel
-          </MDBBtn>
-          <MDBBtn variant="primary" onClick={markJobAsCompleted}>
+          </Button>
+          <Button variant="primary" onClick={markJobAsCompleted}>
             Mark as completed
-          </MDBBtn>
+          </Button>
         </Modal.Footer>
       </Modal>
     </>

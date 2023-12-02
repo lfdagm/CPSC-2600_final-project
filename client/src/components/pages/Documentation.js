@@ -2,16 +2,9 @@ import {
     MDBCard,
     MDBCardHeader,
     MDBCardBody,
-    MDBCardFooter,
     MDBCol,
-    MDBIcon,
-    MDBBtn,
-    MDBListGroup,
-    MDBListGroupItem,
     MDBRow,
     MDBContainer,
-    MDBCardTitle,
-    MDBCardSubTitle,
   } from "mdb-react-ui-kit";
   
   function Documentation() {

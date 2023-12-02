@@ -8,13 +8,7 @@ import {
   MDBCardBody,
   MDBCardFooter,
   MDBCol,
-  MDBIcon,
-  MDBListGroup,
-  MDBListGroupItem,
   MDBRow,
-  MDBBtn,
-  MDBContainer,
-  MDBBadge,
 } from "mdb-react-ui-kit";
 
 import ApplyToTask from "./ApplyToTask";
@@ -36,12 +30,13 @@ function PotentialJobs(props) {
     const request = {
       action: "related jobs",
       areaOfInterest: aOI,
-      userId: user.userId
+      userId: user.userId,
     };
     axios.post("http://localhost:3500/api/jobs/", request).then((repos) => {
       const data = repos.data;
-      console.log(data);
-      setPotentialJobs(data.filter((job) => job.status === "searching"));
+      console.log("data", data);
+      // setPotentialJobs(data.filter((job) => job.status === "searching"));
+      setPotentialJobs(data);
     });
   }, []);
 

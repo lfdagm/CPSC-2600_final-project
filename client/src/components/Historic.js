@@ -11,11 +11,9 @@ import {
   MDBCardFooter,
   MDBCol,
   MDBIcon,
-  MDBBtn,
   MDBListGroup,
   MDBListGroupItem,
   MDBRow,
-  MDBContainer,
   MDBCardTitle,
   MDBCardSubTitle,
 } from "mdb-react-ui-kit";
@@ -52,8 +50,8 @@ function Historic(props) {
 
   return (
     <>
-      <MDBCard alignment="center">
-        <MDBCardHeader>Completed Tasks</MDBCardHeader>
+      <MDBCard alignment="center" className="mb-4">
+        <MDBCardHeader>Previously Completed Tasks</MDBCardHeader>
         <MDBCardBody className="px-4 pt-4">
           <MDBRow className="row-cols-1 row-cols-md-2 gx-3">
             {jobPosts.map((job, index) => (
@@ -66,7 +64,7 @@ function Historic(props) {
                       <div className="d-flex align-items-center">
                         <img
                           src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                          alt=""
+                          alt="category"
                           style={{ width: "45px", height: "45px" }}
                           className="rounded-circle"
                         />
@@ -77,9 +75,6 @@ function Historic(props) {
                           </p>
                         </div>
                       </div>
-                      {/* <MDBBadge pill color='success' light>
-                Active
-              </MDBBadge> */}
                     </div>
                   </MDBCardBody>
                   <MDBCardFooter
@@ -87,14 +82,14 @@ function Historic(props) {
                     border="0"
                     className="p-2 d-flex justify-content-around"
                   >
-                    <MDBBtn
+                    <Button
                       onClick={() => handleShow(job)}
-                      color="link"
-                      rippleColor="primary"
+                      variant="light"
+                      
                       className="text-reset m-0"
                     >
                       Task Details <MDBIcon fas icon="calendar-day" />
-                    </MDBBtn>
+                    </Button>
 
                     <Modal show={show} onHide={handleClose}>
                       <Modal.Header closeButton>
@@ -106,7 +101,7 @@ function Historic(props) {
                             <MDBCardBody>
                               <MDBCardTitle>{jobInfo.jobTitle}</MDBCardTitle>
                               <MDBCardSubTitle className="mb-2">
-                                Job date: {jobInfo.jobDate}
+                                Job Date: {jobInfo.jobDate}
                               </MDBCardSubTitle>
                               <div className="d-flex justify-content-between align-items-center">
                                 <div className="d-flex align-items-center">
@@ -116,21 +111,16 @@ function Historic(props) {
                                     style={{ width: "50px", height: "50px" }}
                                     className="rounded-circle"
                                   />
-                                  {/* <div className="ms-3">
-                          <p className="fw-bold mb-1"> {props.job.jobTitle}</p>
-                          <p className="fw-normal mb-0">
-                            {props.job.jobDescription}
-                          </p>
-                        </div> */}
+                                  
                                   <MDBListGroup
-                                    style={{ minWidthL: "22rem" }}
+                                    style={{ lineHeight:"0.7" }}
                                     light
                                   >
                                     <MDBListGroupItem noBorders>
-                                      Job provider: {jobInfo.jobProvider}
+                                      Job Provider: {jobInfo.jobProvider}
                                     </MDBListGroupItem>
                                     <MDBListGroupItem noBorders>
-                                      Price: {getPrice(jobInfo)}
+                                      Price: ${getPrice(jobInfo)}
                                     </MDBListGroupItem>
                                     <MDBListGroupItem noBorders>
                                       Date Posted: {jobInfo.postCreated}
@@ -144,9 +134,9 @@ function Historic(props) {
                       </Modal.Body>
 
                       <Modal.Footer>
-                        <MDBBtn variant="secondary" onClick={handleClose}>
+                        <Button variant="primary" onClick={handleClose}>
                           Close
-                        </MDBBtn>
+                        </Button>
                       </Modal.Footer>
                     </Modal>
                   </MDBCardFooter>

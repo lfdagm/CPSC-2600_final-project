@@ -44,7 +44,7 @@ export default function ClientPage() {
     }
   };
   return check ? (
-    <MDBContainer className="gx-4 mt-4 w-75">
+    <MDBContainer className="gx-4 my-4 w-75">
       <MDBRow>
         <MDBCol className="mb-4">
           <MDBCard alignment="center">

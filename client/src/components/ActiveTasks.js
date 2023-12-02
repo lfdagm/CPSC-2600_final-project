@@ -51,8 +51,8 @@ function ActiveTask(props) {
           <MDBRow className="row-cols-1 row-cols-md-2 gx-3">
             {jobPosts.map((job, index) => (
               <MDBCol className="mb-4" key={index}>
-                <MDBCard className="h-100">
-                  <MDBCardBody>
+                <MDBCard className="h-100" alignment="center">
+                  <MDBCardBody >
                     <div className="d-flex justify-content-between align-items-center">
                       <div className="d-flex align-items-center">
                         <img
@@ -62,7 +62,7 @@ function ActiveTask(props) {
                           className="rounded-circle"
                         />
                         <div className="ms-3">
-                          <p className="fw-bold mb-1"> {job.jobTitle}</p>
+                          <p className="fw-bold mb-2"> {job.jobTitle}</p>
                           <p className="text-muted mb-0">
                             {job.jobDescription}
                           </p>

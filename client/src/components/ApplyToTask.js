@@ -1,40 +1,32 @@
 import { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
-
+import Button from "react-bootstrap/Button";
 import React from "react";
 import {
   MDBCard,
-  MDBCardHeader,
-  MDBCardBody,
-  MDBCardFooter,
-  MDBCol,
+   MDBCardBody,
   MDBIcon,
-  MDBBtn,
   MDBListGroup,
   MDBListGroupItem,
   MDBInput,
-  MDBRow,
-  MDBContainer,
   MDBCardTitle,
   MDBCardSubTitle,
 } from "mdb-react-ui-kit";
 
 function ApplyToTask(props) {
   const [show, setShow] = useState(false);
-  const [user, setUser ] = useState();
-  const [price, setPrice ] = useState();
+  const [user, setUser] = useState();
+  const [price, setPrice] = useState();
   const [priceCheck, setPriceCheck] = useState(false);
   // const [jobId, setJobId] = useState(0);
 
   useEffect(() => {
-    const userLocal = JSON.parse(localStorage.getItem('user'));
+    const userLocal = JSON.parse(localStorage.getItem("user"));
     console.log("hi" + userLocal.userId);
     setUser(userLocal.userId);
-    console.log("state" + user)
-  },[]);
-  
-  //Rerendering is also pending.
+    console.log("state" + user);
+  }, []);
 
   const handleClose = () => setShow(false);
 
@@ -42,13 +34,13 @@ function ApplyToTask(props) {
 
   // const handlePriceChange = () => setPrice()
 
-  const handleSubmit = (() => {
-    if(priceCheck) {
+  const handleSubmit = () => {
+    if (priceCheck) {
       const request = {
         action: "applyingJob",
         clientId: user,
         jobId: props.job._id,
-        price: price
+        price: price,
       };
       axios.put("http://localhost:3500/api/jobs/", request).then((repos) => {
         console.log(repos);
@@ -56,34 +48,28 @@ function ApplyToTask(props) {
           handleClose();
           window.location.reload();
         }
-      })
+      });
     } else {
       console.log("please enter the price");
     }
-  });
+  };
 
   return (
     <>
-    <MDBBtn
-        onClick={handleShow}
-        color="link"
-        rippleColor="primary"
-        className="text-reset m-0"
-      >
-        Apply to a task
+      <Button onClick={handleShow} variant="light" className="text-reset m-0">
+        Apply To Task
         <MDBIcon fas icon="clipboard-list" />
-      </MDBBtn>
+      </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Task description</Modal.Title>
+          <Modal.Title>Task Details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-      
           <MDBCard className="h-100">
             <MDBCardBody>
               <MDBCardTitle>{props.job.jobTitle}</MDBCardTitle>
               <MDBCardSubTitle className="mb-2">
-                Job date: {props.job.jobDate}
+                Job Date: {props.job.jobDate}
               </MDBCardSubTitle>
               <div className="d-flex justify-content-between align-items-center">
                 <div className="d-flex align-items-center">
@@ -92,42 +78,52 @@ function ApplyToTask(props) {
                     alt=""
                     style={{ width: "50px", height: "50px" }}
                     className="rounded-circle"
-                  /><MDBListGroup style={{ minWidthL: "22rem" }} light>
+                  />
+                  <MDBListGroup style={{ minWidthL: "22rem" }} light>
+                    <MDBListGroupItem noBorders>
+                    <p className="text-muted mb-0">
+                      {props.job.jobDescription}</p>
+                    </MDBListGroupItem>
+
+                    <MDBListGroupItem noBorders>
+                    <p className="text-muted mb-0">
+                      Date Posted: {props.job.postCreated}
+                      </p>
+                    </MDBListGroupItem>
+                  
+
                   <MDBListGroupItem noBorders>
-                    Job Title: {props.job.jobTitle}
-                  </MDBListGroupItem>
-                  <MDBListGroupItem noBorders>
-                    Job Description: {props.job.jobDescription}
-                  </MDBListGroupItem>
-                  <MDBListGroupItem noBorders>
-                    Your Price: 
-                    <MDBInput label='Example label' id='form1' type='number' onChange = {(e) => {
+                    <MDBInput
+                      label="Enter your rate"
+                      id="form1"
+                      type="number"
+                      onChange={(e) => {
                         setPrice(e.target.value);
                         setPriceCheck(true);
-                      }}/>
+                      }}
+                    />
                   </MDBListGroupItem>
-                  <MDBListGroupItem noBorders>
-                    Date Posted: {props.job.postCreated}
-                  </MDBListGroupItem>
-                </MDBListGroup>
+                  </MDBListGroup>
+
+                 
+                </div>
+                
               </div>
-            </div>
-          </MDBCardBody>
-        </MDBCard>
-      </Modal.Body>
+              
+            </MDBCardBody>
+          </MDBCard>
+        </Modal.Body>
 
-      <Modal.Footer>
-        <MDBBtn variant="secondary" onClick={handleClose}>
-          Cancel
-        </MDBBtn>
-        <MDBBtn variant="primary" onClick={handleSubmit}>
-          Apply
-        </MDBBtn>
-      </Modal.Footer>
-    </Modal>
-  </>
-   
-
-    );
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleSubmit}>
+            Apply
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
 }
 export default ApplyToTask;
