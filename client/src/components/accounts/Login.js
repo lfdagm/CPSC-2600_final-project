@@ -30,7 +30,7 @@ export default function SignUp(props) {
           localStorage.setItem("user", JSON.stringify(userFound));
 
           props.handleLogInClose();
-          window.location.replace("http://localhost:3000/login");
+          window.location.replace("https://thriving-kleicha-aff060.netlify.app/login");
         } else {
           console.log(repos.data[0].role);
           const userFound = {
@@ -43,7 +43,7 @@ export default function SignUp(props) {
           localStorage.setItem("user", JSON.stringify(userFound));
 
           props.handleLogInClose();
-          window.location.replace("http://localhost:3000/login");
+          window.location.replace("https://thriving-kleicha-aff060.netlify.app/login");
         }
       });
   };
