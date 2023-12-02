@@ -54,7 +54,7 @@ export default function SignUp (props) {
     if (generalTasks) {
       areaOfInterest.push("generalTasks");
     }
-    if (password === confirmPassword && (areaOfInterest.length > 0 || areaOfInterest.length < 7)) {
+    if (password === confirmPassword && (areaOfInterest.length > 0 || areaOfInterest.length < 7) && passwordErrorMessage === 'Is Strong Password') {
       const newUser = {
         action: "signup",
         firstName: firstName,

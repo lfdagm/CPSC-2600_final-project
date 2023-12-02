@@ -29,7 +29,7 @@ export default function SignUp(props) {
           <MDBRow>
             <MDBCol>
               <MDBCard alignment="center">
-                <Button variant="light" onClick={props.handleRoleSelection}>
+                <Button variant="light" onClick={props.handleJobSeekerRoleSelection}>
                   <MDBCardImage
                     src={communityImg}
                     position="top"
