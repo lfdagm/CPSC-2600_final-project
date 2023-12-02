@@ -42,7 +42,7 @@ function ApplyToTask(props) {
         jobId: props.job._id,
         price: price,
       };
-      axios.put("http://localhost:3500/api/jobs/", request).then((repos) => {
+      axios.put("https://vancomer.onrender.com/api/jobs/", request).then((repos) => {
         console.log(repos);
         if (repos.data.result === "Success") {
           handleClose();

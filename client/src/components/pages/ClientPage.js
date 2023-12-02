@@ -21,7 +21,7 @@ export default function ClientPage() {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     const userId = user.userId;
-    axios.get("http://localhost:3500/api/jobs/" + userId).then((repos) => {
+    axios.get("https://vancomer.onrender.com/api/jobs/" + userId).then((repos) => {
       let jobPosts = repos.data;
       localStorage.setItem("jobPosts", JSON.stringify(jobPosts));
       setCheck(true);

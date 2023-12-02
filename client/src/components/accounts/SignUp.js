@@ -53,7 +53,7 @@ export default function SignUp(props) {
         password: password,
       };
       await axios
-        .post("http://localhost:3500/api/user/", newUser)
+        .post("https://vancomer.onrender.com/api/user/", newUser)
         .then((repos) => {
           if (repos.data.result === "success") {
             const user = {
@@ -66,7 +66,7 @@ export default function SignUp(props) {
             localStorage.setItem("user", JSON.stringify(user));
             // setError(false);
             props.handleSignUpClose();
-            window.location.replace("http://localhost:3000/login");
+            window.location.replace("https://thriving-kleicha-aff060.netlify.app/login");
           } else {
             setEmailErrorMessage(true);
           }

@@ -25,7 +25,7 @@ function SelectApplicants(props) {
     setShow(true);
     const currentJobId = props.job._id;
     await axios
-      .get("http://localhost:3500/api/testing/" + currentJobId)
+      .get("https://vancomer.onrender.com/api/testing/" + currentJobId)
       .then((repos) => {
         const job = repos.data;
         console.log(job);
@@ -53,7 +53,7 @@ function SelectApplicants(props) {
     // };
     // console.log("result: " + request.action);
     // await axios
-    //   .put("http://localhost:3500/api/jobs/", request)
+    //   .put("https://vancomer.onrender.com/api/jobs/", request)
     //   .then((repos) => {
     //     console.log(repos.data.result);
     //   });
@@ -69,7 +69,7 @@ function SelectApplicants(props) {
     };
     console.log("result: " + request.action);
     await axios
-      .put("http://localhost:3500/api/jobs/", request)
+      .put("https://vancomer.onrender.com/api/jobs/", request)
       .then((repos) => {
         console.log(repos.data.result);
       });

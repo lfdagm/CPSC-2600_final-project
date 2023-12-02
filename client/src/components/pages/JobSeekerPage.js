@@ -22,7 +22,7 @@ export default function JobSeekerPage() {
       action: "Jobseeker jobs",
       userId: userTemp.userId,
     };
-    axios.post("http://localhost:3500/api/jobs/", request).then((repos) => {
+    axios.post("https://vancomer.onrender.com/api/jobs/", request).then((repos) => {
       const data = repos.data;
       localStorage.setItem("JSRelatedJobs", JSON.stringify(data));
       setCheck(true);
