@@ -4,7 +4,8 @@ import { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-
+// Model structure for the client's create job post pop
+// Contains Form.js
 function FormModal (props){
     const [show, setShow] = useState(false);
     
@@ -17,7 +18,7 @@ function FormModal (props){
     }
     
 
-     return(
+    return(
 
     <>
     <Button variant="primary" onClick={handleShow} className='mb-3'>

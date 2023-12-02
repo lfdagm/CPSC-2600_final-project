@@ -20,6 +20,7 @@ import {
   MDBCardSubTitle,
 } from "mdb-react-ui-kit";
 
+  // show all the job that is completed and posted by a client
 function Historic(props) {
   const [jobPosts, setJobPosts] = useState([]);
 
@@ -39,10 +40,8 @@ function Historic(props) {
     let jobPostsTemp = JSON.parse(localStorage.getItem("jobPosts")).filter(
       (job) => job.status === "completed"
     );
-
     setJobPosts(jobPostsTemp);
   }, []);
-  console.log(jobPosts);
 
   function getPrice(job) {
     const matchingApplicant = job.applicants.find(

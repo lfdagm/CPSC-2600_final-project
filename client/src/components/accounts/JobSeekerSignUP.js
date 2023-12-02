@@ -3,7 +3,7 @@ import { Col, Button, Row, Container, Card, Form, Modal } from 'react-bootstrap'
 import axios from 'axios';
 import validator from 'validator';
 
-// MISSING  AREAOFINTEREST CHECKBOX LOGIC
+// For new Jobseeker to sign up for the websites
 export default function SignUp (props) {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
@@ -17,7 +17,6 @@ export default function SignUp (props) {
   const [employment, setEmployment] = useState(false);
   const [socializing, setSocializing] = useState(false);
   const [generalTasks, setGeneralTask] = useState(false);
-  // const [aOI, setAOI] = useState();
   const [emailErrorMessage, setEmailErrorMessage] = useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
   // password Validation
@@ -88,10 +87,6 @@ export default function SignUp (props) {
     setPasswordErrorMessage("Confirm Password does not match with the password you have input");
   };
 };
-  // causing a re-render in the modal
-  useEffect(() => {
-  },[emailErrorMessage])
-
 
   return (
     <>

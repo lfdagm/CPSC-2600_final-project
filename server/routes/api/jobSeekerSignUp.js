@@ -11,8 +11,8 @@ router.get('/:id', (req, res) => {
   const userFound = users.find((user) => {
     if (user.email === req.body.email && user.password === req.body.password) {
       return res.json(user)
-    }else {
-      return res.json({role: "null"}); // ??????????
+    } else {
+      return res.json({role: "null"});
     }
   });
   return userFound;

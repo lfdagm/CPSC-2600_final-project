@@ -1,5 +1,4 @@
 import { Image, Modal } from 'react-bootstrap';
-// import '../../App.css';
 
 export default function SignUp (props) {
   const newComerImg = require('./../../img/newComer320.jpg');
@@ -11,7 +10,7 @@ export default function SignUp (props) {
         <Modal.Header closeButton>
           <Modal.Title>VanComer: Select Your Role:</Modal.Title>
         </Modal.Header>
-        <Modal.Body centered>
+        <Modal.Body >
         <div className="mb-3 mt-4 .modal-body">
           <Image
           className='img-responsive'
@@ -21,7 +20,6 @@ export default function SignUp (props) {
           fluid rounded
           style={{width:'50%'}}
           />
-          {/* <a href='https://pngtree.com/freepng/cartoon-suitcase-free-material_5463784.html'>png image from pngtree.com/</a> */}
           <Image
           className='img-responsive'
           src={communityImg} alt='new Comer'
@@ -29,7 +27,6 @@ export default function SignUp (props) {
           fluid rounded
           style={{width:'50%'}}
           />
-          {/* Free to use under the Unsplash License */}
         </div>
         </Modal.Body>
       </Modal>

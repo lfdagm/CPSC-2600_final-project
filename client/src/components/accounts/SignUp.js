@@ -3,6 +3,7 @@ import { Col, Button, Row, Form, Modal } from 'react-bootstrap';
 import axios from "axios";
 import validator from 'validator';
 
+// For new Client to sign up for the websites
 export default function SignUp (props) {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
@@ -39,7 +40,7 @@ export default function SignUp (props) {
       await axios.post('http://localhost:3500/api/user/', newUser).then ((repos) => {
         if (repos.data.result === "success") {
           const user = {
-            userId: repos.data.clientId,
+            userId: repos.data.userId,
             firstName: repos.data.firstName,
             lastName: repos.data.lastName,
             role: repos.data.role
