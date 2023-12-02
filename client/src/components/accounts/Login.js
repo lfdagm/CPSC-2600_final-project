@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import axios from "axios";
-const { REACT_APP_API_URL } = process.env;
-
 
 export default function SignUp(props) {
   const [email, setEmail] = useState();
@@ -17,7 +15,7 @@ export default function SignUp(props) {
       password: { password },
     };
     axios
-      .post("REACT_APP_API_URL/user/", userLoginInfo)
+      .post("https://vancomer.onrender.com/api/user/", userLoginInfo)
       .then((repos) => {
         if (repos.data[0].role === "null") {
           console.log(repos.data.role);

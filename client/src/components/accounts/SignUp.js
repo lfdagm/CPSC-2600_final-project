@@ -53,7 +53,7 @@ export default function SignUp(props) {
         password: password,
       };
       await axios
-        .post("http://localhost:3500/api/user/", newUser)
+        .post("https://vancomer.onrender.com/api/user/", newUser)
         .then((repos) => {
           if (repos.data.result === "success") {
             const user = {

@@ -32,7 +32,7 @@ function PotentialJobs(props) {
       areaOfInterest: aOI,
       userId: user.userId,
     };
-    axios.post("http://localhost:3500/api/jobs/", request).then((repos) => {
+    axios.post("https://vancomer.onrender.com/api/jobs/", request).then((repos) => {
       const data = repos.data;
       console.log("data", data);
       // setPotentialJobs(data.filter((job) => job.status === "searching"));

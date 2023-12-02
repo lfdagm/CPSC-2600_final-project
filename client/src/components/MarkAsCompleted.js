@@ -32,7 +32,7 @@ function MarkAsCompleted(props) {
     };
     console.log(request);
     axios
-      .put('http://localhost:3500/api/jobs', request)
+      .put('https://vancomer.onrender.com/api/jobs', request)
       .then((response) => {
         console.log("Job marked as completed", response.data);
         if (response.data.result === "Success") {
