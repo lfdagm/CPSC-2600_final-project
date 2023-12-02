@@ -20,8 +20,8 @@ function FormModal (props){
      return(
 
     <>
-    <Button variant="primary" onClick={handleShow}>
-      Add task
+    <Button variant="primary" onClick={handleShow} className='mb-3'>
+      Add a New task
     </Button>
 
     <Modal show={show} onHide={handleClose}>

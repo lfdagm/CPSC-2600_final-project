@@ -8,13 +8,7 @@ import {
   MDBCardBody,
   MDBCardFooter,
   MDBCol,
-  MDBIcon,
-  MDBListGroup,
-  MDBListGroupItem,
   MDBRow,
-  MDBBtn,
-  MDBContainer,
-  MDBBadge,
 
 } from "mdb-react-ui-kit";
 import SelectApplicants from "./SelectApplicants";
@@ -74,9 +68,6 @@ function ActiveTask(props) {
                           </p>
                         </div>
                       </div>
-                      {/* <MDBBadge pill color='success' light>
-                Active
-              </MDBBadge> */}
                     </div>
                   </MDBCardBody>
                   <MDBCardFooter

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
+import Button from "react-bootstrap/Button";
 
 import React from "react";
 import {
@@ -58,18 +59,17 @@ function MarkAsCompleted(props) {
 
   return (
     <>
-      <MDBBtn
+      <Button
         onClick={handleShow}
-        color="link"
-        rippleColor="primary"
+        variant="light"
         className="text-reset m-0"
       >
         Mark Task As Completed
         <MDBIcon fas icon="clipboard-list" />
-      </MDBBtn>
+      </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Task description</Modal.Title>
+          <Modal.Title>Task Details </Modal.Title>
         </Modal.Header>
         <Modal.Body>
       
