@@ -43,7 +43,7 @@ export default function SignUp(props) {
   // handling submit
   const submitHandling = async (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
+    if (password === confirmPassword && passwordErrorMessage === "Is Strong Password") {
       const newUser = {
         action: "signup",
         firstName: firstName,
