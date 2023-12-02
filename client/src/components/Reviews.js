@@ -9,19 +9,17 @@ import {
 
 export default function App() {
   return (
-    <MDBContainer className="py-5">
+    <MDBContainer className="mb-4">
       <MDBRow className="d-flex justify-content-center">
         <MDBCol md="10" xl="8" className="text-center">
           <h3 className="mb-4">Testimonials</h3>
           <p className="mb-4 pb-2 mb-md-5 pb-md-0">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit,
-            error amet numquam iure provident voluptate esse quasi, veritatis
-            totam voluptas nostrum quisquam eum porro a pariatur veniam.
+          Discover the real experiences of those who've journeyed with VanComer. Our community's stories reflect the invaluable assistance and connections made through our platform, making transitions into Vancouver life smoother and more enjoyable. Here's what they have to say about their journey with us.
           </p>
         </MDBCol>
       </MDBRow>
       <MDBRow className="text-center">
-        <MDBCol md="4" className="mb-5 mb-md-0">
+        <MDBCol md="4" className="mb-4">
           <div className="d-flex justify-content-center mb-4">
             <img
               src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
@@ -34,8 +32,7 @@ export default function App() {
           <h6 className="text-primary mb-3">Web Developer</h6>
           <p className="px-xl-3">
             <MDBIcon fas icon="quote-left" className="pe-2" />
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos
-            id officiis hic tenetur quae quaerat ad velit ab hic tenetur.
+            My experience with VanComer was exceptional. The guidance I received navigating Vancouver's diverse neighborhoods was invaluable. Their personalized approach made my relocation process stress-free and enjoyable. Truly a service that stands out in its commitment to helping newcomers
           </p>
           <MDBTypography
             listUnStyled
@@ -63,7 +60,7 @@ export default function App() {
             </li>
           </MDBTypography>
         </MDBCol>
-        <MDBCol md="4" className="mb-5 mb-md-0">
+        <MDBCol md="4" className="mb-4">
           <div className="d-flex justify-content-center mb-4">
             <img
               src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
@@ -76,8 +73,7 @@ export default function App() {
           <h6 className="text-primary mb-3">Graphic Designer</h6>
           <p className="px-xl-3">
             <MDBIcon fas icon="quote-left" className="pe-2" />
-            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-            suscipit laboriosam, nisi ut aliquid commodi.
+            VanComer transformed my daunting move to Vancouver into a delightful experience. Job Seekers expertise in local education and housing options provided the clarity I needed. I am deeply grateful for the warm welcome and ongoing support during my transition into this vibrant city.
           </p>
           <MDBTypography
             listUnStyled
@@ -113,8 +109,7 @@ export default function App() {
           <h6 className="text-primary mb-3">Marketing Specialist</h6>
           <p className="px-xl-3">
             <MDBIcon fas icon="quote-left" className="pe-2" />
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui
-            blanditiis praesentium voluptatum deleniti atque corrupti.
+            Settling in Vancouver was made so much easier thanks to VanComer. From finding the perfect apartment to understanding public transport, Job Seekers insights were a lifesaver. I appreciated their attentive service and the genuine care they showed for my family's well-being in a new city.
           </p>
           <MDBTypography
             listUnStyled
