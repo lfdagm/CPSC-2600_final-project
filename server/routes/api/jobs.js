@@ -33,23 +33,24 @@ router.post('/', async (req,res) => {
     let result = [];
     const allJobs = await jobs.find({});
     for (i = 0; i < allJobs.length; i++) {
-      for (j = 0; j < aOI.length; j++) {
-        let applied = false;
-        if (allJobs[i].category === aOI[j]) {
-          for (k = 0; k < appliedJobs.length; k++) {
-            if (allJobs[i]._id === appliedJobs[k].jobId) {
-              applied = true;
-              break;
+      if (allJobs.status === "searching") {
+        for (j = 0; j < aOI.length; j++) {
+          let applied = false;
+          if (allJobs[i].category === aOI[j]) {
+            for (k = 0; k < appliedJobs.length; k++) {
+              if (allJobs[i]._id === appliedJobs[k].jobId) {
+                applied = true;
+                break;
+              }
             }
+            if (!applied) {
+            result.push(allJobs[i]);
+            break;
           }
-          if (!applied) {
-          result.push(allJobs[i]);
-          break;
-        }
+          }
         }
       }
     }
-    console.log(result);
     return res.json(result);
   } else if (req.body.action == "Jobseeker jobs") {
     /**
