@@ -66,7 +66,7 @@ export default function SignUp(props) {
             localStorage.setItem("user", JSON.stringify(user));
             // setError(false);
             props.handleSignUpClose();
-            window.location.replace("https://thriving-kleicha-aff060.netlify.app0/login");
+            window.location.replace("http://localhost:3000/login");
           } else {
             setEmailErrorMessage(true);
           }
