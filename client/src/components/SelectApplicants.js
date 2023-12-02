@@ -28,37 +28,9 @@ function SelectApplicants(props) {
       .get("https://vancomer.onrender.com/api/testing/" + currentJobId)
       .then((repos) => {
         const job = repos.data;
-        console.log(job);
         setUpdatedJob(job);
-        console.log(updatedJob);
       });
   };
-
-  // const handleSubmit = (applicantId) => {
-  //   console.log(applicantId);
-  // };
-  // useEffect(() => {
-  //   const activeJobs = async () =>{
-  //     const currentJobId = props.job._id;
-  //     let result = []
-  //   };
-  //   activeJobs();
-  // }, [])
-  // const handleSubmit = async () => {
-  //   console.log(selected + " " + jobId);
-    // const request = {
-    //   action: "choosing applicant",
-    //   jobSeekerId: selected,
-    //   jobId: jobId,
-    // };
-    // console.log("result: " + request.action);
-    // await axios
-    //   .put("https://vancomer.onrender.com/api/jobs/", request)
-    //   .then((repos) => {
-    //     console.log(repos.data.result);
-    //   });
-    // window.location.reload();
-  // };
 
   const handleSubmit = async (selected, jobId) => {
     // console.log(selected + " " + jobId);

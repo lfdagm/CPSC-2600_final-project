@@ -24,7 +24,6 @@ function PotentialJobs(props) {
 
   const user = JSON.parse(localStorage.getItem("user"));
   const aOI = user.areaOfInterest;
-  console.log(aOI);
 
   useEffect(() => {
     const request = {
@@ -34,7 +33,6 @@ function PotentialJobs(props) {
     };
     axios.post("https://vancomer.onrender.com/api/jobs/", request).then((repos) => {
       const data = repos.data;
-      console.log("data", data);
       // setPotentialJobs(data.filter((job) => job.status === "searching"));
       setPotentialJobs(data);
     });
@@ -42,14 +40,6 @@ function PotentialJobs(props) {
 
   return (
     <>
-      {console.log("potential", potentialJobs)}
-      {/* <h2 className="mx-auto">Job Seeker Page</h2>
-  <div className="col-sm-6">
-  <Card border="danger" style={{ width: '30rem' }}> */}
-      {/* <Card.Header>Potential Jobs</Card.Header>
-        <Card.Body>
-          <ListGroup className="list-group-flush"> */}
-
       <MDBCard alignment="center">
         <MDBCardHeader>Potential Jobs</MDBCardHeader>
         <MDBCardBody className="px-4 pt-4">
