@@ -12,22 +12,21 @@ let currentUserId = 6;
 router.post('/', async (req,res) => {
   try {
     if (req.body.action == "login") {
-      if (req.body.action == "login") {
       let userFound = {role:"null"};
       userFound = await users.find(req.body.email);
       console.log(userFound);
-        if (userFound[0].password === req.body.password.password){
-          console.log("PW checked");
-          return res.json(userFound);
-        } else {
-          console.log(userFound[0].password);
-          console.log(req.body.password);
-          return res.json(userFound);
-        }
+      if (userFound[0].password === req.body.password.password){
+        console.log("PW checked");
+        return res.json(userFound);
+      } else {
+        console.log(userFound[0].password);
+        console.log(req.body.password);
+        return res.json(userFound);
       }
     } else if (req.body.action == "signup") {
       // Check if email already registered
-      if (await users.find({email:req.body.email}).length >= 0) {
+      const existingUser = await users.find({email: req.body.email});
+      if (existingUser.length > 0) {
         console.log(await users.find({email:req.body.email}));
         return res.status(500).json({ result: "error", reason: "Email Existed" });
       }
