@@ -21,6 +21,7 @@ export default function SignUp(props) {
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState("");
   const role = "client";
+  const [emailError, setEmailError] = useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
 
@@ -74,6 +75,7 @@ export default function SignUp(props) {
     } else if (password === confirmPassword) {
     setPasswordErrorMessage("Confirm Password does not match with the password you have input");
     } else if (passwordErrorMessage !== 'Is Strong Password') {
+      setEmailError(true);
       setPasswordErrorMessage("Your passord should have at least 10 character, with at least 1 uppercase letter, 1 lowercase letter, 1 numberic character, and 1 symbolic character.");
     };
   }
@@ -127,7 +129,7 @@ export default function SignUp(props) {
                   : "This email already exist."}
               </Form.Text>
               <Form.Text className="text-muted">
-                We will never share your email with anyone else.
+                {emailError? emailErrorMessage:"We will never share your email with anyone else."}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPasswordConfirm">

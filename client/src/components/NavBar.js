@@ -5,13 +5,6 @@ import Button from 'react-bootstrap/Button';
 import { useEffect } from 'react';
 
 function NavBar(props) {
-  const [loggedin, setLoggedin] = useState(false);
-  useEffect(() => {
-    const user = localStorage.getItem('user');
-    if (user) {
-      setLoggedin(true);
-    }
-  })
   const handleLogout = () => {
     localStorage.removeItem('user');
     window.location.replace("https://thriving-kleicha-aff060.netlify.app/");
@@ -30,7 +23,12 @@ function NavBar(props) {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {/* <Nav.Link href="#about">About</Nav.Link> */}
-            {loggedin? <Nav.Link href="/login">Dashboard</Nav.Link>: null}
+            {localStorage.getItem('user') != null?
+              <>
+                <Nav.Link href="/login">Dashboard</Nav.Link>
+              </>
+              : null
+              }
             <Nav.Link href="/documentation">Documentation</Nav.Link>
             <Nav.Link href="/sources">Sources</Nav.Link>
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
