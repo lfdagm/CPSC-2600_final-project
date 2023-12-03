@@ -125,12 +125,16 @@ router.put('/', async (req,res) => {
       const requirePrice = parseInt(req.body.price);
       const job = await jobs.find({_id:jobId});
       const applicantsOnJob = job[0].applicants;
+      const addTojob = {
+        id: userId,
+        price: requirePrice
+      }
       const addedApplicant = {
         jobId:jobId,
         userId: userId,
         price: requirePrice
       };
-      applicantsOnJob.push(addedApplicant);
+      applicantsOnJob.push(addTojob);
       await jobs.findOneAndUpdate({_id:jobId}, {applicants:applicantsOnJob});
       const job2 = await jobs.find({_id:jobId});
       console.log(job2);
