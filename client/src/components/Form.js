@@ -14,7 +14,7 @@ function UserForm(){
   const [jobDate, setDate] = useState();
   const [address, setAddress] = useState();
   const [category, setCategory] = useState("housing");
-  const [result, setResult] = useState();
+  const [taskTitleError, setTaskTitleError] = useState(false);
 
   // get the user details for creating job post
   useEffect(() => {

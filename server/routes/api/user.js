@@ -19,10 +19,6 @@ router.post('/', async (req,res) => {
         if (userFound[0].password === req.body.password.password){
           console.log("PW checked");
           return res.json(userFound);
-        } else {
-          console.log(userFound[0].password);
-          console.log(req.body.password);
-          return res.json(userFound);
         }
       } catch {
         return res.status(400).json({ result: "error", reason: "Invalid login credentials." });
