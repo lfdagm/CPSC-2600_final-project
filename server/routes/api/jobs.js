@@ -33,7 +33,7 @@ router.post('/', async (req,res) => {
     let result = [];
     const allJobs = await jobs.find({});
     for (i = 0; i < allJobs.length; i++) {
-      if (allJobs.status === "searching") {
+      if (allJobs[i].status === "searching") {
         for (j = 0; j < aOI.length; j++) {
           let applied = false;
           if (allJobs[i].category === aOI[j]) {
