@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 function NavBar(props) {
   const handleLogout = () => {
     localStorage.removeItem('user');
-    window.location.replace("https://thriving-kleicha-aff060.netlify.app/");
+    window.location.replace("http://localhost:3000/");
   }
   return (
     <Navbar sticky="top" expand="lg" className="bg-body-tertiary">
