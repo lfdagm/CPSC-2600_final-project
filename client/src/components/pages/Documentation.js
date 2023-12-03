@@ -91,7 +91,16 @@ import {
             
               <MDBRow>
                 <MDBCol>
-                <p>Write here</p>
+                <ul>
+                  <li>caroussel</li>
+                  <li>sign-up</li>
+                  <li>log-in</li>
+                  <li>password security</li>
+                  <li>user interface</li>
+                  <li>the use of mongoDB</li>
+                  <li>a post/task that can be react by another user</li>
+                  <li>activeTask will go to a separate section after being completed </li>
+                </ul>
   
                  
                 </MDBCol>
