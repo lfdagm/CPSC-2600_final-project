@@ -131,3 +131,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Ignorign folders that starts with build and ignore other files except
+build/*
+!build/build.xml
