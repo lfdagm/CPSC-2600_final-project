@@ -11,7 +11,7 @@ import {
   MDBCol,
   MDBRow,
   MDBContainer
- } from "mdb-react-ui-kit";
+} from "mdb-react-ui-kit";
 
 // For new Client to sign up for the websites
 export default function SignUp(props) {
@@ -56,7 +56,7 @@ export default function SignUp(props) {
       await axios
         .post("https://vancomer.onrender.com/api/user/", newUser)
         .then((repos) => {
-          if (repos.data.result === "success") {
+          try {
             const user = {
               userId: repos.data.userId,
               firstName: repos.data.firstName,
@@ -66,7 +66,7 @@ export default function SignUp(props) {
             localStorage.setItem("user", JSON.stringify(user));
             props.handleSignUpClose();
             window.location.replace("https://thriving-kleicha-aff060.netlify.app/login");
-          } else if (repos.data.result === "error") {
+          } catch {
             setEmailError(true);
             let message = repos.data.reason;
             setEmailErrorMessage(message);
