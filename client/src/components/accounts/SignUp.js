@@ -123,7 +123,10 @@ export default function SignUp(props) {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <Form.Text className="text-muted">
-                {emailError? emailErrorMessage:"We will never share your email with anyone else."}
+                "We will never share your email with anyone else."
+              </Form.Text>
+              <Form.Text className="text-muted">
+                {emailError && <span className='err'>{emailErrorMessage}</span>}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPasswordConfirm">

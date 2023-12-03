@@ -12,15 +12,13 @@ let currentUserId = 6;
 router.post('/', async (req,res) => {
   try {
     if (req.body.action == "login") {
-      try {
-        let userFound = {role:"null"};
-        userFound = await users.find(req.body.email);
-        console.log(userFound);
-        if (userFound[0].password === req.body.password.password){
-          console.log("PW checked");
-          return res.json(userFound);
-        }
-      } catch {
+      let userFound = {role:"null"};
+      userFound = await users.find(req.body.email);
+      console.log(userFound);
+      if (userFound[0].password === req.body.password.password){
+        console.log("PW checked");
+        return res.json(userFound);
+      } else {
         return res.status(400).json({ result: "error", reason: "Invalid login credentials." });
       }
     } else if (req.body.action == "signup") {
