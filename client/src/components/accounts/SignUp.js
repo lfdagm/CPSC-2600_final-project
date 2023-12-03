@@ -64,23 +64,21 @@ export default function SignUp(props) {
               role: repos.data.role,
             };
             localStorage.setItem("user", JSON.stringify(user));
-            // setError(false);
             props.handleSignUpClose();
             window.location.replace("https://thriving-kleicha-aff060.netlify.app/login");
           } else if (repos.data.result === "error") {
+            setEmailError(true);
             setEmailErrorMessage(repos.data.reason);
           }
         }
         );
-    } else if (password === confirmPassword) {
+    } else if (password !== confirmPassword) {
     setPasswordErrorMessage("Confirm Password does not match with the password you have input");
     } else if (passwordErrorMessage !== 'Is Strong Password') {
       setEmailError(true);
       setPasswordErrorMessage("Your passord should have at least 10 character, with at least 1 uppercase letter, 1 lowercase letter, 1 numberic character, and 1 symbolic character.");
     };
   }
-  // causing a re-render in the modal
-  useEffect(() => {}, [emailErrorMessage]);
 
   return (
     <>
@@ -123,11 +121,6 @@ export default function SignUp(props) {
                 placeholder="johnsmith123@example.com"
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <Form.Text className="text-muted">
-                {emailErrorMessage
-                  ? "We will never share your email with anyone else."
-                  : "This email already exist."}
-              </Form.Text>
               <Form.Text className="text-muted">
                 {emailError? emailErrorMessage:"We will never share your email with anyone else."}
               </Form.Text>
