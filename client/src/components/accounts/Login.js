@@ -19,7 +19,7 @@ export default function SignUp(props) {
     axios
       .post("https://vancomer.onrender.com/api/user/", userLoginInfo)
       .then((repos) => {
-        if (repos.data.result === "Success") {
+        try {
           if (repos.data[0].role === "null") {
             console.log(repos.data.role);
           } else if (repos.data[0].role === "client") {
@@ -48,7 +48,7 @@ export default function SignUp(props) {
             props.handleLogInClose();
             window.location.replace("https://thriving-kleicha-aff060.netlify.app/login");
           }
-        } else {
+        } catch {
           setError(true);
           setErrorMessage(repos.data.reason);
         }
