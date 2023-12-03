@@ -17,6 +17,7 @@ export default function SignUp (props) {
   const [employment, setEmployment] = useState(false);
   const [socializing, setSocializing] = useState(false);
   const [generalTasks, setGeneralTask] = useState(false);
+  const [emailError, setEmailError] = useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
   // password Validation
@@ -79,9 +80,10 @@ export default function SignUp (props) {
         props.handleSignUpClose();
         // redirect()
         window.location.replace("https://thriving-kleicha-aff060.netlify.app/login");
-      } else {
-        setEmailErrorMessage(true);
-      }
+      } else if (repos.data.result === "error") {
+            setEmailError(true);
+            setEmailErrorMessage(repos.data.reason);
+          }
     })
   } else if (password !== confirmPassword) {
     setPasswordErrorMessage("Confirm Password does not match with the password you have input");
@@ -135,8 +137,8 @@ export default function SignUp (props) {
               type="email"
               placeholder='johnsmith123@example.com' 
               onChange={(e)=>setEmail(e.target.value)}/>
-              <Form.Text className = "text-muted">
-                We will never share your email with anyone else.
+              <Form.Text className="text-muted">
+                {emailError? emailErrorMessage:"We will never share your email with anyone else."}
               </Form.Text>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
