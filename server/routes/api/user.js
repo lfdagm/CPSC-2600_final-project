@@ -12,16 +12,20 @@ let currentUserId = 6;
 router.post('/', async (req,res) => {
   try {
     if (req.body.action == "login") {
-      let userFound = {role:"null"};
-      userFound = await users.find(req.body.email);
-      console.log(userFound);
-      if (userFound[0].password === req.body.password.password){
-        console.log("PW checked");
-        return res.json(userFound);
-      } else {
-        console.log(userFound[0].password);
-        console.log(req.body.password);
-        return res.json(userFound);
+      try {
+        let userFound = {role:"null"};
+        userFound = await users.find(req.body.email);
+        console.log(userFound);
+        if (userFound[0].password === req.body.password.password){
+          console.log("PW checked");
+          return res.json(userFound);
+        } else {
+          console.log(userFound[0].password);
+          console.log(req.body.password);
+          return res.json(userFound);
+        }
+      } catch {
+        return res.status(400).json({ result: "error", reason: "Invalid login credentials." });
       }
     } else if (req.body.action == "signup") {
       // Check if email already registered
