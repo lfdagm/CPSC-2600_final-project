@@ -43,9 +43,10 @@ function MarkAsCompleted(props) {
       });
   }
   useEffect(() => {},[jobId]);
-  function getPrice() {
-    const matchingApplicant = props.job.applicants.find(
-      (applicant) => applicant.id === props.job.jobProvider
+
+  function getPrice(job) {
+    const matchingApplicant = job.applicants.find(
+      (applicant) => applicant.id === job.jobProvider
     );
    
     return matchingApplicant ? matchingApplicant.price : null;
@@ -92,7 +93,7 @@ function MarkAsCompleted(props) {
                       Job Provider ID: {props.job.jobProvider}
                     </MDBListGroupItem>
                     <MDBListGroupItem noBorders>
-                      Price: $ {getPrice()}
+                      Price: $ {getPrice(props.job)}
                     </MDBListGroupItem>
                     <MDBListGroupItem noBorders>
                       Date Posted: {props.job.postCreated}
