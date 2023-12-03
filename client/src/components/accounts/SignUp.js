@@ -53,10 +53,10 @@ export default function SignUp(props) {
         email: email,
         password: password,
       };
-      await axios
-        .post("https://vancomer.onrender.com/api/user/", newUser)
-        .then((repos) => {
-          try {
+      try {
+        await axios
+          .post("https://vancomer.onrender.com/api/user/", newUser)
+          .then((repos) => {
             const user = {
               userId: repos.data.userId,
               firstName: repos.data.firstName,
@@ -66,13 +66,13 @@ export default function SignUp(props) {
             localStorage.setItem("user", JSON.stringify(user));
             props.handleSignUpClose();
             window.location.replace("https://thriving-kleicha-aff060.netlify.app/login");
-          } catch {
-            setEmailError(true);
-            let message = repos.data.reason;
-            setEmailErrorMessage(message);
-          }
-        }
-        );
+            } 
+          );
+      } catch {
+        setEmailError(true);
+        let message = repos.data.reason;
+        setEmailErrorMessage(message);
+      }
     } else if (password !== confirmPassword) {
     setPasswordErrorMessage("Confirm Password does not match with the password you have input");
     } else if (passwordErrorMessage !== 'Is Strong Password') {

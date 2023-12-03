@@ -16,43 +16,43 @@ export default function SignUp(props) {
       email: { email },
       password: { password },
     };
-    axios
+    try {
+      axios
       .post("https://vancomer.onrender.com/api/user/", userLoginInfo)
       .then((repos) => {
-        try {
-          if (repos.data[0].role === "null") {
-            console.log(repos.data.role);
-          } else if (repos.data[0].role === "client") {
-            console.log(repos.data[0]);
-            const userFound = {
-              userId: repos.data[0]._id,
-              firstName: repos.data[0].firstName,
-              lastName: repos.data[0].lastName,
-              role: repos.data[0].role,
-            };
-            localStorage.setItem("user", JSON.stringify(userFound));
+        if (repos.data[0].role === "null") {
+          console.log(repos.data.role);
+        } else if (repos.data[0].role === "client") {
+          console.log(repos.data[0]);
+          const userFound = {
+            userId: repos.data[0]._id,
+            firstName: repos.data[0].firstName,
+            lastName: repos.data[0].lastName,
+            role: repos.data[0].role,
+          };
+          localStorage.setItem("user", JSON.stringify(userFound));
 
-            props.handleLogInClose();
-            window.location.replace("https://thriving-kleicha-aff060.netlify.app/login");
-          } else {
-            console.log(repos.data[0].role);
-            const userFound = {
-              userId: repos.data[0]._id,
-              firstName: repos.data[0].firstName,
-              lastName: repos.data[0].lastName,
-              role: repos.data[0].role,
-              areaOfInterest: repos.data[0].areaOfInterest,
-            };
-            localStorage.setItem("user", JSON.stringify(userFound));
+          props.handleLogInClose();
+          window.location.replace("https://thriving-kleicha-aff060.netlify.app/login");
+        } else {
+          console.log(repos.data[0].role);
+          const userFound = {
+            userId: repos.data[0]._id,
+            firstName: repos.data[0].firstName,
+            lastName: repos.data[0].lastName,
+            role: repos.data[0].role,
+            areaOfInterest: repos.data[0].areaOfInterest,
+          };
+          localStorage.setItem("user", JSON.stringify(userFound));
 
-            props.handleLogInClose();
-            window.location.replace("https://thriving-kleicha-aff060.netlify.app/login");
-          }
-        } catch {
-          setError(true);
-          setErrorMessage(repos.data.reason);
+          props.handleLogInClose();
+          window.location.replace("https://thriving-kleicha-aff060.netlify.app/login");
         }
       });
+    } catch {
+      setError(true);
+      setErrorMessage(repos.data.reason);
+    }
   };
   return (
     <>
