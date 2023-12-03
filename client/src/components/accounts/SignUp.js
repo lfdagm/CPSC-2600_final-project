@@ -68,7 +68,8 @@ export default function SignUp(props) {
             window.location.replace("https://thriving-kleicha-aff060.netlify.app/login");
           } else if (repos.data.result === "error") {
             setEmailError(true);
-            setEmailErrorMessage(repos.data.reason);
+            let message = repos.data.reason;
+            setEmailErrorMessage(message);
           }
         }
         );
