@@ -81,9 +81,10 @@ export default function SignUp (props) {
         // redirect()
         window.location.replace("https://thriving-kleicha-aff060.netlify.app/login");
       } else if (repos.data.result === "error") {
-            setEmailError(true);
-            setEmailErrorMessage(repos.data.reason);
-          }
+          setEmailError(true);
+          let message = repos.data.reason;
+          setEmailErrorMessage(message);
+        }
     })
   } else if (password !== confirmPassword) {
     setPasswordErrorMessage("Confirm Password does not match with the password you have input");
